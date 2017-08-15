@@ -335,6 +335,15 @@ public class NH_Sheet {
         return this.m_wb;
     }
 
+	/// <summary>
+	/// 保存Excel
+	/// </summary>
+	public void SaveToExcel(string filePath,bool isNew = false)
+	{
+		HSSFWorkbook wb = ToWorkbook (isNew);
+		NPOIHssfEx.ToFile (wb, filePath);
+	}
+
     // L - Local:表示当前Class中的变量
     public string ToLString()
     {
