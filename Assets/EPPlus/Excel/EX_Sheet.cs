@@ -235,14 +235,20 @@ public class EX_Sheet {
 		return null;
 	}
 
-	public ExcelPackage ToExcel(bool isNew = false){
+	public ExcelPackage ToExcel(int state = 0){
 		ExcelPackage ep = null;
-		this.pre_exPackage = this.m_exWB.m_ep;
-		if (isNew) {
+		if (state != 0) {
+			ClearPrePackage ();
+			this.pre_exPackage = this.m_exWB.m_ep;
+
 			ep = new ExcelPackage ();
 			this.m_exWB.m_ep = ep;
 			this.m_exWB.m_wb = ep.Workbook;
-			this.m_sheet = ep.Workbook.Worksheets.Add (this.sheetName);
+			if (state == 1) {
+				this.m_sheet = ep.Workbook.Worksheets.Add (this.sheetName,this.m_sheet);
+			} else {
+				this.m_sheet = ep.Workbook.Worksheets.Add (this.sheetName);
+			}
 		} else {
 			ep = this.m_exWB.m_ep;
 		}
@@ -258,16 +264,29 @@ public class EX_Sheet {
 	/// <summary>
 	/// 保存Excel
 	/// </summary>
-	public void SaveToExcel(string filePath,bool isNew = false)
+	public void SaveToExcel(string filePath,int state = 0)
 	{
-		ExcelPackage ep = ToExcel (isNew);
+		ExcelPackage ep = ToExcel (state);
 		FileInfo output = new FileInfo(filePath);
 		ep.SaveAs (output);
 	}
 
+	void ClearPrePackage(){
+		if (pre_exPackage != null) {
+			pre_exPackage.Dispose ();
+		}
+		pre_exPackage = null;
+	}
+
 	public void Clear(){
+		ClearPrePackage ();
+
+		m_tableList.Clear ();
+
+		if (m_exWB != null)
+			m_exWB.Clear ();
+		
 		m_exWB = null;
 		m_sheet = null;
-		pre_exPackage = null;
 	}
 }

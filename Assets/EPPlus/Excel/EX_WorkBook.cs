@@ -24,10 +24,7 @@ public class EX_WorkBook {
 
 	~EX_WorkBook()
 	{
-		m_wb = null;
-		if (m_ep != null)
-			m_ep.Dispose ();
-		m_ep = null;
+		Clear ();
 	}
 
 	void Init(string path){
@@ -73,5 +70,12 @@ public class EX_WorkBook {
 	{
 		FileInfo output = new FileInfo(filePath);
 		this.m_ep.SaveAs (output);
+	}
+
+	public void Clear(){
+		m_wb = null;
+		if (m_ep != null)
+			m_ep.Dispose ();
+		m_ep = null;
 	}
 }
