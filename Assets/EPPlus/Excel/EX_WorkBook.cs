@@ -42,8 +42,13 @@ public class EX_WorkBook {
 		this.m_wb = this.m_ep.Workbook;
 	}
 
+	/// <summary>
+	/// Gets the sheet.
+	/// </summary>
+	/// <returns>The sheet.</returns>
+	/// <param name="sheetIndex">Sheet index 从 1 开始.</param>
 	public ExcelWorksheet GetSheet(int sheetIndex){
-		if(sheetIndex < this.m_wb.Worksheets.Count)
+		if(sheetIndex > 0 && sheetIndex <= this.m_wb.Worksheets.Count)
 			return this.m_wb.Worksheets [sheetIndex];
 		
 		return null;
