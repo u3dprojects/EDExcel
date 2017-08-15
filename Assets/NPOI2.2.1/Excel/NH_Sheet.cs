@@ -73,6 +73,10 @@ public class NH_Sheet {
 		DoInit(wb, sheet);
     }
 
+	~NH_Sheet(){
+		DoClear ();
+	}
+
 	public void ReInit(HSSFWorkbook wb, HSSFSheet sheet){
 		DoClear();
 		DoInit (wb, sheet);
