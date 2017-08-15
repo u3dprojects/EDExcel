@@ -63,4 +63,10 @@ public class EH_Row{
 		this.sheet = sheet;
 		this.rowIndex = rowIndex;
 	}
+
+	public virtual void OnClone(EH_Row org){
+		this.sheet = org.sheet;
+		this.rowIndex = org.rowIndex;
+		this.uniqueID = org.uniqueID;
+	}
 }
