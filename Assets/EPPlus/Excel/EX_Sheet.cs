@@ -19,8 +19,8 @@ public class EX_Sheet {
 
 	public string sheetName;
 	public int sheetIndex;
-	protected int NumberOfRows;
-	protected int NumberOfColumns;
+	public int NumberOfRows;
+	public int NumberOfColumns;
 
 	public List<EX_SheetCell> m_tableList = new List<EX_SheetCell> ();
 
