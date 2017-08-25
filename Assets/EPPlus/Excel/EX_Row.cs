@@ -41,7 +41,7 @@ public class EX_Row{
 		}
 	}
 
-	public void ToCache()
+	public virtual void ToCache()
 	{
 		if (!IsCanCache)
 			return;
