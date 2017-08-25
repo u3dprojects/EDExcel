@@ -153,36 +153,60 @@ public class EX_Sheet {
 	public void SaveValue(int row, int column, string val)
 	{
 		ExcelRange cell = GetCell(row, column, true);
+		if (cell.IsRichText) {
+			// 清除了富文本格式
+			cell.RichText.Clear ();
+		}
 		cell.Value = val;
 	}
 
 	public void SaveValue(int row, int column, int val)
 	{
 		ExcelRange cell = GetCell(row, column, true);
+		if (cell.IsRichText) {
+			// 清除了富文本格式
+			cell.RichText.Clear ();
+		}
 		cell.Value = val;
 	}
 
 	public void SaveValue(int row, int column, float val)
 	{
 		ExcelRange cell = GetCell(row, column, true);
+		if (cell.IsRichText) {
+			// 清除了富文本格式
+			cell.RichText.Clear ();
+		}
 		cell.Value = val;
 	}
 
 	public void SaveValue(int row, int column, double val)
 	{
 		ExcelRange cell = GetCell(row, column, true);
+		if (cell.IsRichText) {
+			// 清除了富文本格式
+			cell.RichText.Clear ();
+		}
 		cell.Value = val;
 	}
 
 	public void SaveValue(int row,int column,bool val)
 	{
 		ExcelRange cell = GetCell(row, column, true);
+		if (cell.IsRichText) {
+			// 清除了富文本格式
+			cell.RichText.Clear ();
+		}
 		cell.Value = val;
 	}
 
 	public void SaveValue(int row, int column, System.DateTime val)
 	{
 		ExcelRange cell = GetCell(row, column, true);
+		if (cell.IsRichText) {
+			// 清除了富文本格式
+			cell.RichText.Clear ();
+		}
 		cell.Value = val;
 	}
 
@@ -191,6 +215,10 @@ public class EX_Sheet {
 		if (val == null)
 			return;
 		ExcelRange cell = GetCell(row, column, true);
+		if (cell.IsRichText) {
+			// 清除了富文本格式
+			cell.RichText.Clear ();
+		}
 		cell.Value = val;
 	}
 
